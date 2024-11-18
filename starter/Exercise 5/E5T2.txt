@@ -1,0 +1,16 @@
+1.Scan infrastructure as code templates:
+
+Terrafirm: A tool for static code analysis used for Terraform plans. It is designed to detect security misconfigurations.
+Example vulnerability: If we configure the IP range "0.0.0.0/0" for a Security Group, Terrafirm will give a warning that the "Source range is open to the Internet".
+
+
+2.Scan AMIs or containers for OS vulnerabilities:
+
+Anchore: It certifies a Docker image by analyzing it to determine if it is secure or not. Anchore engine can run standalone or integrated with orchestration platforms like Kubernetes, Rancher, Amazon ECS, Docker Swarm. Anchore is also available as a Jenkins plugin to scan the CI/CD pipeline.
+Example vulnerability: With Anchore, we can integrate it into our CI/CD pipeline (e.g. Jenkins) to scan the container after build. It will list out all the CVEs (Common Vulnerabilities and Exposures) detected. We can set up a rule where the pipeline fails if too many CVEs are found.
+
+
+3.Scan an AWS environment for cloud configuration vulnerabilities:
+
+AWS Config: An effective tool for assessing, evaluating, recording, and auditing the configurations of resources in the AWS environment. It simplifies security analysis, compliance auditing, operational troubleshooting, and change management.
+Example vulnerability: AWS Config can identify misconfigurations that lead to security risks, such as an EC2 instance being allowed to connect on ports 22 (SSH) and 3389 (RDP).
