@@ -1,0 +1,40 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+=> Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+1. S3 general purpose buckets should require requests to use SSL: 
+    - This vulnerability is related to the security of data in transit to and from the S3 buckets.
+* Recommendation: 
+    - Update the S3 bucket policy to deny any requests that do not use HTTPS (Secure Socket Layer). 
+    - This can be done by adding a condition to the bucket policy that checks the "aws:SecureTransport" condition key 
+    and denies any requests that are not using SSL/TLS.
+
+2. S3 general purpose buckets should have Lifecycle configurations:
+    - This vulnerability is related to the management and retention of data stored in the S3 buckets.
+* Recommendation: 
+    - Configure Lifecycle rules for the S3 buckets to automatically transition older objects 
+    to a lower-cost storage class (e.g., Glacier)  or delete objects after a certain period of time, based on your data retention policies.
+
+3. Attached EBS volumes should be encrypted at-rest:
+    - This vulnerability is related to the security of data stored on the EBS volumes.
+*Recommendation: 
+    - Enable encryption at-rest for all EBS volumes attached to your EC2 instances. 
+    - This can be done by creating the volumes with encryption enabled or by modifying the encryption settings of existing volumes.
+
+4. VPC default security groups should not allow inbound or outbound traffic:
+    - This vulnerability is related to the security of your VPC network.
+*Recommendation: 
+    - Review and update the default security group rules to deny all inbound and outbound traffic. 
+    - Instead, create custom security groups with the least-privilege access required for your resources.
+
+5. Security groups should not allow ingress from 0.0.0.0/0 or ::/0 to port 22
+    - This vulnerability is related to the security of your EC2 instances, specifically SSH access.
+Recommendation: 
+    - Update the security group rules to restrict SSH access (port 22) to only the necessary IP addresses or ranges, 
+    instead of allowing access from any IP address (0.0.0.0/0 or ::/0).
+
+6. EC2 subnets should not automatically assign public IP addresses:
+    - This vulnerability is related to the network configuration of your EC2 instances.
+* Recommendation: 
+    - Review the subnet settings and ensure that the "Auto-assign public IP" option is disabled. 
+    - This will prevent EC2 instances from being assigned a public IP address by default, 
+    which can help improve the security of your network.

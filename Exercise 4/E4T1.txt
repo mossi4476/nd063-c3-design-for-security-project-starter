@@ -1,0 +1,22 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+    - Restrict SSH access to EC2 instances by only allowing SSH traffic (port 22) from a specific, 
+    trusted IP address range or VPC. This can be done by updating the security group rules.
+
+    - Implement multi-factor authentication (MFA) for SSH access to EC2 instances. 
+    This adds an extra layer of security beyond just a username and password.
+
+    - Consider using AWS Systems Manager Session Manager as an alternative to SSH, 
+    as it provides secure, browser-based access to instances without exposing the SSH port.
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+    - Ensure that EC2 instances have the least-privilege IAM permissions required to perform their tasks. 
+    Avoid granting unnecessary permissions, especially for accessing sensitive resources like the "secret recipes" S3 bucket.
+
+    - Use IAM roles to grant permissions to EC2 instances, instead of embedding AWS credentials directly in the instance. 
+    This way, if the instance credentials are compromised, the damage is limited to the specific permissions granted to that role.
+    
+    - Implement S3 bucket policies and access control lists (ACLs) to restrict access to the "secret recipes" bucket. 
+    Ensure that only the necessary IAM roles or users have the required permissions to access the bucket.
+
+    - Consider using AWS KMS to encrypt the data in the "secret recipes" bucket, and control access to the encryption keys. 
+    This way, even if the instance credentials are compromised, the attacker would not be able to decrypt the data without the encryption keys.

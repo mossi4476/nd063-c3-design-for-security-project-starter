@@ -1,0 +1,10 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1 - Lack of Encryption for S3 Buckets
+- The diagram does not indicate whether the S3 buckets ("Free Recipes" and "Secret Recipe Vault") have encryption enabled. 
+- Storing sensitive data in S3 buckets without encryption at rest increases the risk of data exposure if unauthorized access is gained.
+
+# Poor practice 2 - IAM Role and Policy Placement and Access:
+- The IAM role and policy are shown in the diagram without details on how they are secured or managed. 
+- If IAM roles and policies are not properly configured and managed, they can become a vulnerability. 
+- Policies should follow the principle of least privilege, and sensitive roles should have strong protection mechanisms, including MFA for role assumption and strict auditing.

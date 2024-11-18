@@ -1,0 +1,15 @@
+# Identify tools that will allow you to do the following
+### Example vulnerability
+
+## Scan infrastructure as code templates
+    - AWS CloudFormation Guard: Allowing unrestricted SSH access (0.0.0.0/0) to EC2 instances in the CloudFormation template.
+    - Checkov:  Unencrypted S3 buckets or EBS volumes defined in the Infrastructure as Code templates.
+
+##Scan AMI’s or containers for OS vulnerabilities
+    - Amazon Inspector: Outdated operating system packages with known security vulnerabilities in the AMI or container image.
+    - Clair: Presence of high-severity CVEs (Common Vulnerabilities and Exposures) in the container image dependencies.
+    
+##Scan an AWS environment for cloud configuration vulnerabilities
+    - AWS Config: Security groups allowing unrestricted inbound access (0.0.0.0/0) to sensitive ports like SSH (22) or RDP (3389).
+    - AWS Security Hub: Lack of multi-factor authentication (MFA) enabled for IAM users with console access.
+

@@ -1,0 +1,20 @@
+# Describe GuardDuty findings that were detected related to the brute force attack:
+- GuardDuty detected that Ec2 Attack instance is performing SSH brute force attacks against Web Service Instance. 
+Brute force attacks are used to gain unauthorized access to your instance by guessing the SSH password
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+According to the AWS GuardDuty documentation, the service continuously monitors and analyzes various data sources to identify potential security threats 
+and unauthorized activities within your AWS environment. 
+Some of the key data sources that GuardDuty uses include:
+    1. VPC Flow Logs: 
+        - GuardDuty analyzes the network traffic flow logs within your Virtual Private Cloud (VPC) to detect anomalous or suspicious network activity, 
+        such as connections to known malicious IP addresses.
+    2. AWS CloudTrail Logs: 
+        - GuardDuty processes the AWS CloudTrail management event logs to identify unusual API calls 
+        or account access patterns that could indicate an attempted compromise.
+    3. DNS Logs: 
+        - GuardDuty monitors the Domain Name System (DNS) logs to detect attempts to connect to malicious domains or IP addresses, 
+        which could be a sign of malware or other malicious activity.
+    4. AWS CloudTrail S3 Data Event Logs: 
+        - GuardDuty analyzes the S3 data event logs to detect unusual or unauthorized access to your S3 buckets, 
+        which could be a sign of data exfiltration or other malicious activities.
